@@ -1,3 +1,4 @@
+#!/usr/bin/awk -f
 function norm(maxa, maxb, v) {
     return int((v * maxb) / maxa)
 }
