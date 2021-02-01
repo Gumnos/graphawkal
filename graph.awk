@@ -29,11 +29,12 @@ function show(_x,_l,_s,_w){
     }
 }
 
-BEGIN{
+BEGIN {
     COLUMNS = ("COLUMNS" in ENVIRON ? int(ENVIRON["COLUMNS"]) : 80)-1
     width = min = 0
     max = 1
 }
+
 {
     if ($0 == MARK){
         show()
@@ -41,10 +42,7 @@ BEGIN{
         delete data
     } else {
         f = $NF
-        if (length(f) > width) {
-            print "Increasing width from", width, "to" , length(f)
-            width = length(f)
-            }
+        if (length(f) > width) width = length(f)
         c = ++data[f]
         if (c > max) max = c
         if (c < min) min = c
