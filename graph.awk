@@ -9,7 +9,7 @@ function rep(c, n, _s) {
     return _s
 }
 
-function show(_x,_l,_s,_w){
+function show(_x,_l,_s,_w,_d){
     if (NOCLEAR==0)
         printf("%c[2J%c[H", 27, 27)
     else print rep("-", COLUMNS)
@@ -18,6 +18,10 @@ function show(_x,_l,_s,_w){
     for (_x=1; _x<=_l; _x++){
         f = i2t[_x]
         _s = sprintf("%i/%i", data[f], hi[f])
+        if (f in p) {
+            _d = p[f] - data[f]
+        } else _d = 0
+        _s = _s " " (_d<0?"":"+") _d
         _w = COLUMNS - (width + 3 + length(_s)) # 
         printf("%*s| %s%s%s %s\n", \
             width, f, \
@@ -38,7 +42,7 @@ BEGIN {
 {
     if ($0 == MARK){
         show()
-        for (k in data)p[k] = data[k]
+        for (k in data) p[k] = data[k]
         delete data
     } else {
         f = $NF
