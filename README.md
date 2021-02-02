@@ -13,3 +13,7 @@ To monitor output, you can use something like
     $ (while : ; do find . -type f -name "?*.*" ; echo; sleep 5; done) | graph.awk -F'[.]'
 
 It graphs based on the last "field" on each input line, so you can change the field-delimiter using the `-F` option for `awk`.
+
+If new items appear, they get added at the bottom as they are encountered which means that the graph above will remain in stable order.
+
+**NB:** The entire graph will be rescaled on each iteration through to accommodate increases in data.
