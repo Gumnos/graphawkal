@@ -16,4 +16,6 @@ It graphs based on the last "field" on each input line, so you can change the fi
 
 If new items appear, they get added at the bottom as they are encountered which means that the graph above will remain in stable order.
 
-**NB:** The entire graph will be rescaled on each iteration through to accommodate increases in data.
+The label area will automatically adjust/increase to accommodate longer labels as they appear in the input stream.
+
+**NB:** The entire graph will be rescaled on each iteration through to accommodate increases in data-size or label length.
